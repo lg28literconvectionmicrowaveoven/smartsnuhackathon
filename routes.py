@@ -1,4 +1,4 @@
-from resources.water_params import WaterParams
+from water_params import WaterParams
 
 
 def initialize_routes(api):
