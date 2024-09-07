@@ -1,19 +1,32 @@
 import csv
 import io
 
+<<<<<<< HEAD
 from flask import Flask, jsonify, request
 from models import load_data
+=======
+from flask import Flask,jsonify, render_template, request, redirect, url_for
+from models import filter_data, load_data
+>>>>>>> 2d4b516 (add webpage)
 
 app = Flask(__name__)
 
 # Load the CSV data when the app starts
 data, df = load_data("data.csv")
+<<<<<<< HEAD
 df = df.dropna(how="all", axis=0)
+=======
+print(df)
+>>>>>>> 2d4b516 (add webpage)
 
 
 @app.route("/")
-def home():
-    return "Water Body Monitoring API"
+def index():
+    # Convert DataFrame to HTML table with Tailwind classes
+    html_table = df.to_html(classes='min-w-full divide-y divide-gray-200', index=False)
+    
+    # Render the table in the HTML template
+    return render_template('index.html', table=html_table)
 
 
 # API route to fetch all data

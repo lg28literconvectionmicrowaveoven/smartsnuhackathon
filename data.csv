@@ -1,4 +1,4 @@
-﻿station-code,location,temperature-min,temperature-max,ph-min,ph-max,conductivity-min,conductivity-max,coliform-min,coliform-max,dissolved-solids-min,dissolved-solids-max,fluoride-min,fluoride-max,arsenic-min,arsenic-max
+﻿Station Code,Location,Min. Temp.,Max. Temp.,Min. pH,Max. pH,Min. Conductivity,Max. Conductivity,Min. Coliform,Max. Coliform,Min. Dissolved Solids,Max. Dissolved Solids,Min. Fluoride,Max. Fluoride,Min. Arsenic,Max. Arsenic
 3477,"WELL AT ALIPUR, DELHI",-,-,7.5999999999999996,7.5999999999999996,-,-,-,-,896,911,-,-,-,-
 3479,"WELL AT AURBINDO MARG, DELHI",-,-,7.2000000000000002,7.2999999999999998,-,-,-,-,612,623,-,-,-,-
 3480,"WELL AT BAWANA, DELHI",-,-,7.2999999999999998,7.5999999999999996,-,-,-,-,258,279,-,-,-,-
@@ -44,6 +44,4 @@
 3544,"WELL AT UJWAH, DELHI",-,-,7.2000000000000002,7.4000000000000004,-,-,-,-,394,402,-,-,-,-
 3545,WELL AT VASANT KUNJ DELH,-,-,7.0999999999999996,7.4000000000000004,-,-,-,-,687,701,-,-,-,-
 3546,WELL AT VASANT VIHA,-,-,7.2000000000000002,7.4000000000000004,-,-,-,-,400,437,-,-,-,-
-,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,
 

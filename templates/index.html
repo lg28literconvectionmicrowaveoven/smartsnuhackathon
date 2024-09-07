@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dilliyil thannir</title>
+    <!-- Include Tailwind CSS from CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-2xl font-bold mb-4">DILLI MEIN PANI</h1>
+
+        <!-- Dynamic Table Styling with Tailwind -->
+        <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-200">
+                <!-- Flask dynamically inserts the DataFrame table here -->
+                {{ table | safe }}
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>
