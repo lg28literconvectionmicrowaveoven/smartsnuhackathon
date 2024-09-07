@@ -8,7 +8,7 @@ from models import filter_data, load_data
 app = Flask(__name__)
 
 # Load the CSV data when the app starts
-data, df = load_data("NWMP_DATA_2022-12-14.csv")
+data, df = load_data("data.csv")
 
 
 @app.route("/")
@@ -64,7 +64,7 @@ def upload_csv():
         csv_reader = csv.reader(io.StringIO(csv_data))
 
         # Append the parsed CSV data to the local CSV file
-        with open("NWMP_DATA_2022-12-14.csv", mode="a", newline="") as f:
+        with open("data.csv", mode="a", newline="") as f:
             writer = csv.writer(f)
             for row in csv_reader:
                 writer.writerow(row)
