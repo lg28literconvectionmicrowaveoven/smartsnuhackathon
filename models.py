@@ -1,57 +1,29 @@
-from flask_sqlalchemy import SQLAlchemy
+import pandas as pd
 
-db = SQLAlchemy()
+# Load CSV data into a DataFrame and convert to dictionary
+def load_data(csv_file_path):
+    df = pd.read_csv(csv_file_path)
+    data = df.to_dict(orient='records')
+    return data, df
 
+# Function to filter data based on parameters
+def filter_data(df, filters):
+    filtered_data = df.copy()
 
-class WaterQuality(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    # Apply filters if provided
+    if filters['temp']:
+        filtered_data = filtered_data[filtered_data['Temperature'] == float(filters['temp'])]
+    if filters['ph']:
+        filtered_data = filtered_data[filtered_data['pH'] == float(filters['ph'])]
+    if filters['conductivity']:
+        filtered_data = filtered_data[filtered_data['Conductivity'] == float(filters['conductivity'])]
+    if filters['bod']:
+        filtered_data = filtered_data[filtered_data['BOD'] == float(filters['bod'])]
+    if filters['coliform']:
+        filtered_data = filtered_data[filtered_data['Coliform'] == float(filters['coliform'])]
+    if filters['fluoride']:
+        filtered_data = filtered_data[filtered_data['Fluoride'] == float(filters['fluoride'])]
+    if filters['arsenic']:
+        filtered_data = filtered_data[filtered_data['Arsenic'] == float(filters['arsenic'])]
 
-    # Parameters
-    temperature_Min = db.Column(db.Float)
-    temperature_Max = db.Column(db.Float)
-
-    ph_Min = db.Column(db.Float)
-    ph_Max = db.Column(db.Float)
-
-    conductivity_Min = db.Column(db.Float)
-    conductivity_Max = db.Column(db.Float)
-
-    bod_Min = db.Column(db.Float)
-    bod_Max = db.Column(db.Float)
-
-    total_coliform_Min = db.Column(db.Float)
-    total_coliform_Max = db.Column(db.Float)
-
-    fluoride_Min = db.Column(db.Float)
-    fluoride_Max = db.Column(db.Float)
-
-    arsenic_Min = db.Column(db.Float)
-    arsenic_Max = db.Column(db.Float)
-
-    # Date and Time of the record
-    timestamp = db.Column(db.DateTime, nullable=False)
-
-    def __init__(self, data):
-        # Initialize the object with input data (as a dict)
-        self.temperature_Min = data.get("temperature_min")
-        self.temperature_Max = data.get("temperature_max")
-
-        self.ph_Min = data.get("ph_min")
-        self.ph_Max = data.get("ph_max")
-
-        self.conductivity_Min = data.get("conductivity_min")
-        self.conductivity_Max = data.get("conductivity_max")
-
-        self.bod_Min = data.get("bod_min")
-        self.bod_Max = data.get("bod_max")
-
-        self.total_coliform_Min = data.get("coliform_min")
-        self.total_coliform_Max = data.get("coliform_max")
-
-        self.fluoride_Min = data.get("fluoride_min")
-        self.fluoride_Max = data.get("fluoride_max")
-
-        self.arsenic_Min = data.get("arsenic_min")
-        self.arsenic_Max = data.get("arsenic_max")
-
-        self.timestamp = data.get("timestamp")
+    return filtered_data.to_dict(orient='records')

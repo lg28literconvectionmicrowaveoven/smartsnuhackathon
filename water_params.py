@@ -37,7 +37,7 @@ class WaterParams(Resource):
             type=lambda x: datetime.strptime(x, "%Y-%m-%dT%H:%M:%S"),
             required=True,
         )
-
+        parser.add_argument("name", type=str, required=True)
         # Parse input arguments
         data = parser.parse_args()
 

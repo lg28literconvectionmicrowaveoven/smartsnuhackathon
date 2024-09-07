@@ -1,22 +1,38 @@
-from flask import Flask
-from flask_restful import Api
-from models import db
-from routes import initialize_routes
+from flask import Flask, jsonify, request
+from models import load_data, filter_data
 
 app = Flask(__name__)
 
-# Config for SQLAlchemy DB (using SQLite for simplicity)
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///data.db"
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+# Load the CSV data when the app starts
+data, df = load_data('NWMP_DATA_2022-12-14.csv')
 
-# Initialize API and DB
-api = Api(app)
-db.init_app(app)
+@app.route('/')
+def home():
+    return "Water Body Monitoring API"
 
-# Initialize Routes
-initialize_routes(api)
+# API route to fetch all data
+@app.route('/api/data', methods=['GET'])
+def get_all_data():
+    return jsonify(data)
 
-if __name__ == "__main__":
-    with app.app_context():
-        db.create_all()  # Create tables if they don't exist
-    app.run(host="127.0.0.1", port=5000, debug=True)
+# API route to filter data by parameters (temp, ph, conductivity, etc.)
+@app.route('/api/data/filter', methods=['GET'])
+def filter_by_params():
+    # Get query params
+    filters = {
+        'temp': request.args.get('temp'),
+        'ph': request.args.get('ph'),
+        'conductivity': request.args.get('conductivity'),
+        'bod': request.args.get('bod'),
+        'coliform': request.args.get('coliform'),
+        'fluoride': request.args.get('fluoride'),
+        'arsenic': request.args.get('arsenic')
+    }
+
+    # Filter data using the model's function
+    filtered_data = filter_data(df, filters)
+
+    return jsonify(filtered_data)
+
+if __name__ == '__main__':
+    app.run(debug=True)
