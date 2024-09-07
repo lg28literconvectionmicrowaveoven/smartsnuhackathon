@@ -1,1 +1,1 @@
-# smartsnuhackathon
+### smartsnuhackathon
