@@ -27,22 +27,22 @@ def get_all_data():
 def filter_by_params():
     # Get query params
     filters = {
-        'station_code': request.args.get('station-code'),
-        'location': request.args.get('location'),
-        'temperature_min': request.args.get('temperature-min'),
-        'temperature_max': request.args.get('temperature-max'),
-        'ph_min': request.args.get('ph-min'),
-        'ph_max': request.args.get('ph-max'),
-        'conductivity_min': request.args.get('conductivity-min'),
-        'conductivity_max': request.args.get('conductivity-max'),
-        'coliform_min': request.args.get('coliform-min'),
-        'coliform_max': request.args.get('coliform-max'),
-        'dissolved_solids_min': request.args.get('dissolved-solids-min'),
-        'dissolved_solids_max': request.args.get('dissolved-solids-max'),
-        'fluoride_min': request.args.get('fluoride-min'),
-        'fluoride_max': request.args.get('fluoride-max'),
-        'arsenic_min': request.args.get('arsenic-min'),
-        'arsenic_max': request.args.get('arsenic-max'),
+        "station_code": request.args.get("station-code"),
+        "location": request.args.get("location"),
+        "temperature_min": request.args.get("temperature-min"),
+        "temperature_max": request.args.get("temperature-max"),
+        "ph_min": request.args.get("ph-min"),
+        "ph_max": request.args.get("ph-max"),
+        "conductivity_min": request.args.get("conductivity-min"),
+        "conductivity_max": request.args.get("conductivity-max"),
+        "coliform_min": request.args.get("coliform-min"),
+        "coliform_max": request.args.get("coliform-max"),
+        "dissolved_solids_min": request.args.get("dissolved-solids-min"),
+        "dissolved_solids_max": request.args.get("dissolved-solids-max"),
+        "fluoride_min": request.args.get("fluoride-min"),
+        "fluoride_max": request.args.get("fluoride-max"),
+        "arsenic_min": request.args.get("arsenic-min"),
+        "arsenic_max": request.args.get("arsenic-max"),
     }
 
     # Filter data using the model's function
