@@ -1,7 +1,7 @@
 import csv
 import io
 
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, redirect, render_template, request, url_for
 from models import load_data
 
 app = Flask(__name__)
@@ -14,10 +14,10 @@ df = df.dropna(how="all", axis=0)
 @app.route("/")
 def index():
     # Convert DataFrame to HTML table with Tailwind classes
-    html_table = df.to_html(classes='min-w-full divide-y divide-gray-200', index=False)
-    
+    html_table = df.to_html(classes="min-w-full divide-y divide-gray-200", index=False)
+
     # Render the table in the HTML template
-    return render_template('index.html', table=html_table)
+    return render_template("index.html", table=html_table)
 
 
 # API route to fetch all data
